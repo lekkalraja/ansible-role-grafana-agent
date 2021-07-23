@@ -1,0 +1,19 @@
+---
+    - name: Get Docker-Compose Version
+      shell: docker-compose --version
+      ignore_errors: yes
+      register: ver
+
+    - name: Install Docker-Compose
+      script: files/install_dc.sh
+      when: ver.stdout == ''
+
+    - name: Get Docker-Compose Version
+      shell: docker-compose --version
+      ignore_errors: yes
+      register: newVar
+      when: ver.stdout == ''
+
+    - name: Print Docker_Compose Version
+      debug:
+        msg: " {{ newVar.stdout if ver.stdout == '' else ver.stdout }}"

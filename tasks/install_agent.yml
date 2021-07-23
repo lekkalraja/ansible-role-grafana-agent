@@ -1,0 +1,16 @@
+---
+  - name: Checkout Grafana Agent
+    git:
+      repo: "{{ agent_repo }}"
+      dest: "{{ agent_dir }}"
+      version: main
+
+  - name: Make sure docker is running
+    systemd:
+      state: started
+      name: docker
+
+  - name: Start the Grafana Agent
+    shell: docker-compose up -d
+    args:
+      chdir: "{{ agent_dir }}/example/docker-compose/"

@@ -1,0 +1,6 @@
+---
+packages:
+  - git
+  - docker
+agent_dir: /home/ec2-user/grafana-agent
+agent_repo: https://github.com/grafana/agent.git

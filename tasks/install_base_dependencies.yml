@@ -1,0 +1,22 @@
+---
+    - name: Get {{ item }} Version
+      shell: "{{ item }} --version"
+      ignore_errors: yes
+      register: ver
+
+    - name: Install {{ item }}
+      yum:
+        update_cache: yes
+        name: "{{ item }}"
+        state: latest
+      when: ver.stdout == ''
+
+    - name: Get {{ item }} Version
+      shell: "{{ item }} --version"
+      ignore_errors: yes
+      register: newVar
+      when: ver.stdout == ''
+
+    - name: Print {{ item }} Version
+      debug:
+        msg:  "{{ newVar.stdout if ver.stdout == '' else ver.stdout }}"

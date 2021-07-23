@@ -1,0 +1,11 @@
+---
+- name: Installing Dependencies
+  include_tasks: install_base_dependencies.yml
+  with_items:
+    - "{{ packages }}"
+
+- name: Installing Docker-Compose
+  include_tasks: install_docker_compose.yml
+
+- name: Install And Start Grafana Agent
+  include_tasks: install_agent.yml

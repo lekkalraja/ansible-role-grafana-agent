@@ -1,0 +1,15 @@
+galaxy_info:
+  author: Rajasekhar Lekkala
+  description: Role To Install Grafana Agent
+  company: XYZ.com
+
+  license: license (GPL-2.0-or-later, MIT, etc)
+
+  min_ansible_version: 2.9
+
+  platforms:
+  - name: Cent-OS
+    versions:
+    - all
+  galaxy_tags: [git, docker, docker-compose, grafana-agent]
+dependencies: []
